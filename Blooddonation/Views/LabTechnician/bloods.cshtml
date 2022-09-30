@@ -1,0 +1,129 @@
+﻿@model List<Blooddonation.Models.Blood> ;
+@{
+    ViewData["Title"] = "bloods";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/labtechnician/dashbord" class="nav-link h3 text-white my-2">
+                Labtech
+            </a>
+
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/donationrequest">Request Result</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/bloods"> Bloods</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+        <br>
+        <table class="styled-table">
+
+            <thead>
+                <tr>
+                    <th>BloodType</th>
+                    <th>PackNo</th>
+                    <th>Volume</th>
+                    <th>RegDate</th>
+                    <th>ExpDate</th>
+                    <th></th>
+                    <th></th>
+                
+                </tr>
+
+
+            </thead>
+            <tbody>
+
+
+
+                @foreach (var list in Model)
+                {
+                <tr>
+                    <td>@list.BloodType </td>
+                    <td>@list.PackNumber</td>
+                    <td>@list.QuantityOfBlood</td>
+                    <td>@list.RegDate</td>
+                    <td>@list.ExpDate</td>
+                    <td> <a href="/labtechnician/updateblood/@list.BloodId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">UpdateBlood</button></a></td>
+                    <td> <a href="/labtechnician/deleteblood/@list.BloodId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">DeleteBlood</button></a></td>
+
+
+
+                </tr>
+    
+    }
+
+                @if (!Model.Any())
+                {
+    <tr>
+        <td>No</td>
+        <td>Blood</td>
+        <td>Added</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    }
+
+
+
+            </tbody>
+        </table>
+
+        <br />
+        <br />
+    </div>
+
+</body>
+
+</html>
+

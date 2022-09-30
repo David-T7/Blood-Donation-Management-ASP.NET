@@ -1,0 +1,120 @@
+﻿@model dynamic;
+@{
+    ViewData["Title"] = "addblood";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/labtechnician/dashbord" class="nav-link h3 text-white my-2">
+                Labtech
+            </a>
+
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/donationrequest">Request Result</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/bloods"> Bloods</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+        <br /><br />
+
+
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h1 class="fs-4 card-title fw-bold mb-4">Add Blood</h1>
+                        <form action="/labtechnician/addblood/@Model.donor.DonorId/@Model.request.ReqeustResultId"  method="post">
+                            <div class="mb-3">
+                                <label for="BloodType">BloodType</label>
+                                <input type="text" id="BloodType" name="BloodType" class="form-control" value="@Model.donor.BloodType" />
+                                <br />
+
+                                <label for="">PackNumber</label>
+                                <input type="number" id="PackNumber" name="PackNumber" class="form-control" />
+
+
+                                <br />
+                                <label for="RegDate">RegDate</label>
+                                <input type="datetime-local" id="RegDate" name="RegDate" class="form-control" />
+
+                                <br />
+                                <label for="ExpDate">ExpDate</label>
+                                <input type="datetime-local" id="ExpDate" name="ExpDate" class="form-control" />
+
+
+                                <br />
+
+                                <label for="QuantityOfBlood">Volume</label>
+                                <input type="number" id="QuantityOfBlood" name="QuantityOfBlood" class="form-control" />
+
+                            </div>
+                            <br>
+
+                            <div style="align-self:auto; margin-left: 130px;">
+                                <button type="submit" class="btn btn-primary ms-auto">
+                                    Add
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+        </div>
+        <br><Br>
+        <br><Br>
+        <br><Br>
+
+
+    </div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,133 @@
+﻿@model List<Blooddonation.Models.Appointment>
+
+@{
+    ViewData["Title"] = "appointment";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/nurse/dashbord" class="nav-link h3 text-white my-2">
+                Nurse
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/appointment">Appointment</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/donationrequest"> Request</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+
+        <br>
+
+
+        <table class="styled-table" >
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                @foreach (var app in Model)
+                {
+                <tr>
+                    <td> @app.AppointmentDate </td>
+                    <td> @app.Status  </td>
+                    @if (app.Status == "accepted")
+                    {
+
+                <td><a href="/nurse/appointmentstatus/@app.AppointmentId/rejected"><button type="button" class="btn btn-primary btn-sm" style="background-color: red;">Reject</button></a></td>
+                <td></td>    
+                }
+
+                    @if (app.Status == "rejected")
+                    {
+
+                <td><a href="/nurse/appointmentstatus/@app.AppointmentId/accepted"><button type="button" class="btn btn-primary btn-sm" style="background-color: green;">Accept</button></a></td>
+                <td></td>   
+                }
+                    
+                    @if (app.Status == "inprogress")
+                    {
+                <td><a href="/nurse/appointmentstatus/@app.AppointmentId/accepted"><button type="button" class="btn btn-primary btn-sm" style="background-color: green;">Accept</button></a></td>
+                <td><a href="/nurse/appointmentstatus/@app.AppointmentId/rejected"><button type="button" class="btn btn-primary btn-sm" style="background-color: red;">Reject</button></a></td>
+                    }
+
+
+                </tr>
+                }
+
+                @if (!Model.Any())
+            {
+            <tr>
+                <td>No</td>
+                <td>Appointment</td>
+                <td>Made</td>
+                <td></td>
+            </tr>
+            }
+
+
+            </tbody>
+        </table>
+
+
+        <br><br>
+        <br><br>
+
+    </div>
+
+</body>
+
+</html>

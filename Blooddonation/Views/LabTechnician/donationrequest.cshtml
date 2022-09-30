@@ -1,0 +1,162 @@
+﻿@model dynamic
+@{ ViewData["Title"] = "donationrequest"; }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/labtechnician/dashbord" class="nav-link h3 text-white my-2">
+                Labtech
+            </a>
+
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/donationrequest">Request Result</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/bloods"> Bloods</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/labtechnician/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+
+        <br />
+
+
+        <table class="styled-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Appointment</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var request in Model.donationrequestlist)
+                {
+
+                    int match = 0;
+                <tr>
+                    <td> @request.RequestDate </td>
+                    <td> @request.Status  </td>
+
+                    @foreach (var appointment in Model.appointmentlist)
+                    {
+
+                        @if (request.Status == "accepted" && request.ReqeustResultId == appointment.ReqeustResultId)
+                        {
+                            match += 1;
+                            <td>@appointment.Status</td>
+                            @if (appointment.Status == "accepted")
+                            {
+                                <td> <a href="/labtechnician/addblood/@request.DonorId/@request.ReqeustResultId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">AddBlood</button></a></td>
+
+                            }
+                            @if (appointment.Status == "rejected" || appointment.Status == "finished")
+                            {
+                                <td>  <button type="button" disabled class="btn btn-primary btn-sm" style="background-color: red;">AddBlood</button></td>
+
+
+                            }
+                        }
+
+                    }
+                    @if (match == 0)
+                    {
+                        <td>NotMade</td>
+                        <td>  <button type="button" disabled class="btn btn-primary btn-sm" style="background-color: red;">AddBlood</button></td>
+
+                    }
+
+
+                    <td><a href="/labtechnician/donorinfo/@request.DonorId"> <button type="button" class="btn btn-primary ms-auto" style="background-color:green">DonorInfo</button></a></td>
+
+
+                    <td> <a href="/labtechnician/blockdonor/@request.DonorId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">Block</button></a></td>
+
+
+
+                </tr>
+                }
+
+                @if (Model == null)
+                {
+                    <tr>
+                        <td>No</td>
+                        <td>Donation</td>
+                        <td>Request</td>
+                        <td></td>
+                    </tr>
+                }
+
+
+
+
+
+
+
+
+            </tbody>
+
+
+        </table>
+
+        <br /><br />
+        <br /><br />
+        <br /><br />
+
+
+
+    </div>
+
+</body>
+</html>

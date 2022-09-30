@@ -1,0 +1,240 @@
+﻿@model dynamic
+@{ ViewData["Title"] = "accounts"; }
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/admin/dashbord" class="nav-link h3 text-white my-2">
+                Admin
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/accounts">Account</a></span>
+            </li>
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+
+        <br>
+
+        <table class="styled-table">
+
+            <thead>
+                <tr>
+                    <th>Donors Information</th>
+                    <th><a href="/admin/createaccount"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Create Account</button> </a></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+
+
+
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Gender</th>
+                    <th>BloodGroup</th>
+                    <th>PhoneNo</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+
+            </thead>
+
+            <tbody>
+           
+
+            @foreach (var don in Model.donor)
+             {
+
+                <tr>
+                    <td>@don.FirstName</td>
+                    <td>@don.LastName</td>
+                    <td>@don.Gender</td>
+                    <td>@don.BloodType</td>
+                    <td>@don.PhoneNo</td>
+                    <td><a href="/admin/edituseraccount/@don.AccountId"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Update</button> </a></td>
+                    <td><a href="/admin/deleteuseraccount/@don.AccountId"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Delete</button> </a></td>
+
+                </tr>           
+                }
+
+                @if (Model.donor == null)
+                {
+                    <tr>
+                        <th>No</th>
+                        <th>Donor</th>
+                        <th>Registerd</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                }
+
+            </tbody>
+
+
+
+        </table>
+
+        <br><br>
+
+        <table class="styled-table">
+
+            <thead>
+                <tr>
+                    <th>Nurse Information</th>
+                    <th><a href="/admin/createaccount"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Create Account</button> </a></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+
+
+            </thead>
+
+            <tbody>
+           
+                 @foreach (var nur in Model.nurse)
+                {
+
+            <tr>
+                <td>@nur.UserName</td>
+                <td>@nur.Email</td>
+                <td><a href="/admin/edituseraccount/@nur.AccountId"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Update</button> </a></td>
+                <td><a href="/admin/deleteuseraccount/@nur.AccountId"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Delete</button> </a></td>
+            </tr>
+                }
+
+                @if (Model.nurse == null)
+                {
+                    <tr>
+                        <td>No</td>
+                        <td>Nurse </td>
+                        <td>Registered</td>
+                        <td></td>
+                    </tr>
+
+                }
+
+
+
+
+
+            </tbody>
+
+        </table>
+
+        <br><br>
+
+        <table class="styled-table">
+
+            <thead>
+                <tr>
+                    <th>LabTechnician Information</th>
+                    <th><a href="/admin/createaccount"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Create Account</button> </a></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+
+            </thead>
+
+            <tbody>
+                @foreach (var labtech in Model.labtechnician)
+                {
+
+                    <tr>
+                        <td>@labtech.UserName</td>
+                        <td>@labtech.Email</td>
+                        <td><a href="/admin/edituseraccount/@labtech.AccountId"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Update</button> </a></td>
+                        <td><a href="/admin/deleteuseraccount/@labtech.AccountId"><button type="button" href="" class="btn btn-primary btn-sm" style="background-color: red;">Delete</button> </a></td>
+                    </tr>
+                }
+
+                @if (Model.labtechnician == null)
+                {
+                    <tr>
+                        <td>No</td>
+                        <td>Labtechnician </td>
+                        <td>Registered</td>
+                        <td></td>
+                    </tr>
+
+                }
+
+
+
+            </tbody>
+
+        </table>
+
+
+
+
+
+
+
+    </div>
+
+
+
+</body>
+</html>

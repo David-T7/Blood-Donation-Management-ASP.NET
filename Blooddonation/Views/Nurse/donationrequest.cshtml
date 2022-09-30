@@ -1,0 +1,156 @@
+﻿@model dynamic
+@{ ViewData["Title"] = "donationrequest"; }
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/nurse/dashbord" class="nav-link h3 text-white my-2">
+                Nurse
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/appointment">Appointment</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/donationrequest"> Request</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+
+        <br />
+
+
+        <table class="styled-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Appointment</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var request in Model.donationrequestlist)
+                {
+
+                    int match = 0;
+                <tr>
+                    <td> @request.RequestDate </td>
+                    <td> @request.Status  </td>
+
+                    @foreach (var appointment in Model.appointmentlist)
+                    {
+
+                        @if (request.Status == "accepted" && request.ReqeustResultId == appointment.ReqeustResultId)
+                        {
+                            match += 1;
+                            <td>@appointment.Status</td>
+                            @if (appointment.Status == "accepted")
+                            {
+                                <td> <a href="/nurse/donorinfo/@request.DonorId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">DonorInfo</button></a></td>
+
+                            }
+                        }
+
+                    }
+                    @if (match == 0)
+                    {
+                        <td>NotMade</td>
+                        <td></td>
+                    }
+
+
+                    <td><a href="/nurse/requestresult/@request.ReqeustResultId"> <button type="button" class="btn btn-primary ms-auto" style="background-color:green">Check</button></a></td>
+
+
+                    <td> <a href="/nurse/donorinfo/@request.DonorId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">DonorInfo</button></a></td>
+
+
+
+                </tr>
+                }
+
+                @if (Model == null)
+                {
+                    <tr>
+                        <td>No</td>
+                        <td>Donation</td>
+                        <td>Request</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+
+
+
+
+
+
+
+
+            </tbody>
+
+
+        </table>
+
+        <br /><br />
+        <br /><br />
+        <br /><br />
+
+
+
+    </div>
+
+</body>
+</html>

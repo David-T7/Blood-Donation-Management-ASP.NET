@@ -1,0 +1,173 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "dashbord";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/nurse/dashbord" class="nav-link h3 text-white my-2">
+                Nurse
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/donationrequest">Request</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/appointment"> Appointment </a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+
+        <div class="p-1 my-container active-cont" style="background-color:lightblue">
+            <!-- Top Nav -->
+            <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+            </nav>
+            <br>
+            <div class="container" style="background-color:lightblue">
+                <div class="row" style="column-gap: 70px;">
+                    <div class="card" style="width: 10rem;">
+
+                        <div class="card-body">
+                            <p class="card-text"><b> @Model.requestno </b> <br>Request</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 10rem;">
+
+                        <div class="card-body">
+                            <p class="card-text"><b> @Model.acceptedrequest </b> <br>Accepted</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 10rem;">
+
+                        <div class="card-body">
+                            <p class="card-text"><b> @Model.inprogressrequest </b> <br>Pending</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 10rem;">
+
+                        <div class="card-body">
+                            <p class="card-text"><b> @Model.rejectedrequest </b> <br>Rejected</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+            </div>
+            <br />
+
+            <table class="styled-table">
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Appointment</th>
+                        <th>DonorInfo</th>
+                    </tr>
+
+
+                </thead>
+
+                <tbody>
+
+
+                    @foreach (var request in Model.donationrequestlist)
+                    {
+                        int match = 0;
+
+
+                        <tr>
+                            <td> @request.RequestDate </td>
+                            <td> @request.Status  </td>
+                            @foreach (var appointment in Model.appointmentlist)
+                            {
+
+                                @if (request.Status == "accepted" && request.ReqeustResultId == appointment.ReqeustResultId)
+                                {
+                                    match += 1;
+                                    <td>  @appointment.Status </td>
+                                }
+
+                            }
+                            @if (match == 0)
+                            {
+                                <td>Not made</td>
+                            }
+
+                            <td> <a href="/nurse/donorinfo/@request.DonorId"> <button type="button" class="btn btn-primary btn-sm" style="background-color: red;">DonorInfo</button></a></td>
+                        </tr>
+                    }
+
+                    @if (Model.donationrequestlist == null)
+                    {
+                        <tr>
+                            <td>No</td>
+                            <td>Donation</td>
+                            <td>Request</td>
+                        </tr>
+                    }
+
+
+                </tbody>
+
+
+            </table>
+
+            <br /><br />
+            <br /><br />
+            <br /><br />
+
+
+        </div>
+
+</body>
+</html>
+
+

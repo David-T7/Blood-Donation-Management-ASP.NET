@@ -1,0 +1,98 @@
+﻿@model dynamic
+
+@{ ViewData["Title"] = "dashbord"; }
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/admin/dashbord" class="nav-link h3 text-white my-2">
+                Donor
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/accounts">Account</a></span>
+            </li>
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/admin/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+
+        <br>
+        <div class="container" style="background-color:lightblue">
+            <div class="row" style="column-gap: 70px;">
+                <div class="card" style="width: 10rem;">
+
+                    <div class="card-body">
+                        <p class="card-text"><b> @Model.donorno </b> <br>Donors</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 10rem;">
+
+                    <div class="card-body">
+                        <p class="card-text"><b> @Model.nurseno </b> <br> Nurses</p>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 10rem;">
+
+                    <div class="card-body">
+                        <p class="card-text"><b> @Model.labtechno </b> <br> Lab Technician</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <br>
+        </div>
+
+
+
+
+
+        <br><br>
+        <br><br>
+        <br><br>
+    </div>
+
+
+
+</body>
+</html>

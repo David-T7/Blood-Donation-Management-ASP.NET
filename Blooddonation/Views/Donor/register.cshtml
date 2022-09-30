@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "register";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Registeration Page</title>
+
+</head>
+
+<body>
+
+    <section class="h-100">
+        <div class="text-center my-5">
+            <img src="/images/nbb.jpeg" alt="logo" width="100">
+        </div>
+
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                    <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <div class="p-5">
+                                        <h3 class="fw-normal mb-5" style="color:red"><b>Donor Registeration</b> </h3>
+                                        <h3 class="fw-normal mb-5" style="color: #4835d4;">General Infomation</h3>
+
+                                        <form action="/donor/register" method="post">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-4 pb-2">
+                                                    <div class="form-outline">
+                                                        <label class="form-label" for="FirstName">First Name</label>
+                                                        <input type="text" id="FirstName" name="FirstName" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="LastName">Last Name</label>
+                                                        <input id="LastName" name="LastName" type="text" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="DateOfBirth">DateOfBirth</label>
+                                                        <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="BloodType">BloodType</label>
+                                                        <select id="BloodType" type="text" name="BloodType" class="form-control form-control-lg">
+                                                            <option value="O+">O+</option>
+                                                            <option value="O-">O-</option>
+                                                            <option value="A+">A+</option>
+                                                            <option value="A-">A-</option>
+                                                            <option value="B+">B+</option>
+                                                            <option value="B-">B-</option>
+                                                            <option value="AB+">AB+</option>
+                                                            <option value="AB-">AB-</option>
+                                                        </select> <br />
+                                                        
+                                                        <label class="form-label" for="Gender">Gender</label>
+                                                        <select id="Gender" type="text" name="Gender" class="form-control form-control-lg"> 
+                                                        <option value="M">M</option>
+                                                        <option value="F">F</option>
+                                                        </select><br />
+                                                        <label class="form-label" for="PhoneNo">PhoneNo</label>
+                                                        <input id="PhoneNo" type="number" name="PhoneNo" class="form-control form-control-lg" /><br />
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6 mb-4 pb-2">
+                                                    <div class="form-outline">
+
+                                                        <label class="form-label" for="Weight">Weight</label>
+                                                        <input id="Weight" type="number" name="Weight" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="Height">Height</label>
+                                                        <input id="Height" type="number" name="Height" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="BMI">BMI</label>
+                                                        <input id="BMI" type="number" name="BMI" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="UserName">Username</label>
+                                                        <input id="UserName" type="text" name="UserName" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="Password">Password</label>
+                                                        <input id="Password" type="password" name="Password" class="form-control form-control-lg" /><br />
+                                                        <label class="form-label" for="Email">Email</label>
+                                                        <input id="Email" type="email" name="Email" class="form-control form-control-lg" /><br />
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <button type="submit" class="btn btn-primary ms-auto">
+                                                Register
+                                            </button>
+                                            &nbsp;&nbsp;
+
+
+                                            <a href="/home/index/">
+                                                <button type="button" class="btn btn-primary ms-auto">
+                                                    Return Home
+                                                </button>
+                                        </form>
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+</body>
+</html>
+

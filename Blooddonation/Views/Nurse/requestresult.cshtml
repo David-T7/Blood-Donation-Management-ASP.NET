@@ -1,0 +1,141 @@
+﻿@model Blooddonation.Models.DonationReqeustResult ;
+
+@{
+    ViewData["Title"] = "requestresult";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/nurse/dashbord" class="nav-link h3 text-white my-2">
+                Nurse
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/donationrequest">Request</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/appointment"> Appointment </a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/nurse/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br>
+        </nav>
+
+
+        <br><br>
+        <section class="h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h1 class="fs-4 card-title fw-bold mb-4">Request Result </h1>
+                        <b>
+                            Do you have any heart disease blood circulation problem, blood clotting ?
+                        </b> <br />
+                        <h>Ans:@Model.HeartDisease <h>
+                        <br />
+                        <b>
+                        Do you have kidney failure ,lung disease ,blood pressure, diabetes ,epilepsy ?
+                        </b> <br />
+                        <h>Ans:@Model.Kidney_Lung_Bloodpressure<h>
+                        <br />
+                        <b>
+                        Have you ever had liver problems?
+                        </b> <br />
+                        <h>Ans:@Model.Liverproblems<h>
+                        <br />
+                        <b> Have you ever had any sexually transmitted disease?
+                        </b> <br />
+                        <h>Ans:@Model.STD<h>
+                        <br />
+                        <b>
+                        Have you get tattoo get ear pierced or skin pierced(in the last month)?
+                        </b> <br />
+                        <h>Ans:@Model.Tattoo_Ear_skin_pierced<h>
+                        <br />
+                        <b>
+                        Have you slept with someone other than your partner in manner that is not safe?
+                        </b> <br />
+                        <h>Ans:@Model.Slpet_Unsafely_OtherThanPartner.<h>
+                        <br />
+                        <b>
+                        Have you ever had serious skin  repair procedure or do you have appointment to do so ?
+                        </b> <br />
+                        <h>
+                        Ans:@Model.SeriousSkinRepair<h>
+                        <br />
+                        <b>
+                        Are you pregnant ?
+                        </b> <br />
+                        <h>Ans:@Model.Preagnant<h>
+                        <br />
+                        <b>
+                        In the last 6month have you had a miscarriage or abortion ?
+                        </b> <br />
+                        <h>
+                        Ans:@Model.Abortion<h>
+                       <br />
+                       <b>
+                       Are you currently breast feeding ?
+                       </b> <br />
+                       <h>Ans:@Model.BreastFeeding<h>
+                        <br />
+                         <b>
+                        Would you like to receive information and advice regarding your blood healthfulness ?
+                        </b> <br />
+                        <h>Ans:@Model.BloodHealthfulnessInfo<h>
+    <br />
+    <a href="/nurse/requeststatus/@Model.ReqeustResultId/accepted"><button type="button" class="btn btn-primary btn-sm" style="background-color: green;">Accept</button></a>&nbsp;
+    <a href="/nurse/requeststatus/@Model.ReqeustResultId/rejected"><button type="button" class="btn btn-primary btn-sm" style="background-color: red;">Reject</button></a>
+
+</div>
+                </div>
+            </div>
+        </section>
+        <br>
+
+    </div>
+
+</body>
+</html>

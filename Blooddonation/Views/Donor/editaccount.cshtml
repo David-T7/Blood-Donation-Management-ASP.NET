@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "editaccount";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="css/sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+         id="sidebar">
+
+        <ul class="nav flex-column text-white w-100">
+            <a href="/donor/dashbord" class="nav-link h3 text-white my-2">
+                Donor
+            </a>
+            <li class="nav-link">
+                <i class="bx bxs-dashboard"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/donor/dashbord"> Home</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/donor/appointmentlist">Appointment</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-git-pull-request"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/donor/donationrequestlist"> Request</a></span>
+            </li>
+
+
+
+            <li class="nav-link">
+                <i class="bx bx-edit"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/donor/editaccount"> Edit Account</a></span>
+            </li>
+
+            <li class="nav-link">
+                <i class="bx bx-log-out"></i>
+                <span class="mx-2"><a class="inner-anchor" href="/donor/logout"> Log Out </a></span>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+    <!-- Main Wrapper -->
+    <div class="p-1 my-container active-cont" style="background-color:lightblue">
+        <!-- Top Nav -->
+        <nav class="navbar top-navbar navbar-light bg-light px-5">
+            <br />
+        </nav>
+
+
+        <br><br>
+        <section class="h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h1 class="fs-4 card-title fw-bold mb-4">Edit Account <a href="/donor/changepassword"> <button type="submit" class="btn btn-primary ms-auto">ChangePasssword </button></a> </h1>
+                            
+
+
+                                @using (Html.BeginForm("editaccount", "donor", FormMethod.Post))
+                                {
+
+                                <div class="mb-3">
+                                    <label for="OldUsername">OldUsername</label>
+                                    <input type="text" id="OldUserName" name="OldUserName" class="form-control" value=@ViewBag.username />
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="NewUsername">NewUsername</label>
+                                    <input type="text" id="NewUsername" name="NewUsername" class="form-control" />
+
+                                </div>
+
+
+                                <div style="align-self:auto; margin-left: 130px;">
+                                    <button type="submit" class="btn btn-primary ms-auto">
+                                        Update
+                                    </button>
+                                    <br><br>
+                                </div>
+                                }
+                                <br />
+
+
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <br>
+
+    </div>
+
+</body>
+</html>
