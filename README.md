@@ -1,3 +1,3 @@
 # blooddonation-web2project
 
-This is a blooddonation management  project built using Asp.Net MVC.
+This is a Blood Donation Management project built using Asp.Net MVC.
